@@ -7,6 +7,11 @@ Wszystko co tutaj jest wymienione pochodzi z oficjalnej dokumentacji: [Instalacj
 
 ### 1. Ustawienie repozytorium docker
 
+Otwórz terminal i połącz się z serwerem:
+```
+ssh USER@192.168.XXX.XXX
+```
+
 W terminalu wywołujemy po kolei komendy z dokumentacji:
 ```
 sudo apt update
