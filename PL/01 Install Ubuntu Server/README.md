@@ -209,3 +209,13 @@ Adres IP serwera można sprawdzić poleceniem:
 ```bash
 ip a
 ```
+
+---
+
+### 14. Aktualizacje
+
+Na koniec dobrze jeszcze zaktualizować system zanim przejdziemy do instalacji różnych programów.
+```
+sudo apt update
+sudo apt upgrade -y
+```
