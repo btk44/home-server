@@ -52,5 +52,13 @@ sudo systemctl start docker
 ```
 ---
 
+### 4. Utworzenie folderu na konfiguracje i dane kontenerów
+
+Tworzymy folder w którym będziemy przechowywać dane z dockera:
+```
+mkdir docker
+```
+---
+
 **mocno polecam ten poradnik traktować jako przedawniony i skorzystać z oficjalnej strony dockera podanej na początku**
 
