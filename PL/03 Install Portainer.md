@@ -28,6 +28,11 @@ Moje modyfikacje to:
 - volumes: data wskazuje na folder w moim home
 - network_mode: chcę żeby portainer korzystał z domyślnej sieci
 
+Otwórz terminal i połącz się z serwerem:
+```
+ssh USER@192.168.XXX.XXX
+```
+
 Przed uruchomieniem pliku tworzymy folder *portainer* (wewnątrz folderu *docker* utowrzonego po instalacji dockera). Upewnij się, że jesteś w */home/USER*:
 ```
 pwd
