@@ -53,6 +53,7 @@ Wklejamy zawartość pliku compose do *docker-compose.yml*. Skopiuj kod wyżej, 
 ```
 nano docker-compose.yml
 Ctrl+Shift+V -> wklei tekst
+Zmień USER na swojego usera, np. bk
 Ctrl+O -> zapyta czy zapisać
 Enter -> potwierdź zapis
 Ctrl+X -> zamknij plik
