@@ -43,8 +43,9 @@ cd
 ```
 A teraz utworzenie potrzebnych folderów i pliku:
 ```
-mkdir docker/portainer
-mkdir docker/portainer/data
+cd docker
+mkdir portainer
+mkdir portainer/data
 cd portainer
 touch docker-compose.yml
 ```
