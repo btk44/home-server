@@ -2,7 +2,7 @@
 
 ### 1. Plik compose
 
-Poniżej plik docker compose, aby stworzyć i uruchomić portainer:
+Poniżej plik docker compose, aby stworzyć i uruchomić nginx porxy manager:
 ```
 services:
   nginx-pm:
