@@ -2,12 +2,12 @@
 
 ### 0. Dokumentacja
 
-Portainer to webowy interfejs do zarządzania dockerem, bardzo przydatne, gdy nie lubimy zarządzać z poziomu terminala.
-Wszystko co tutaj jest wymienione pochodzi z oficjalnej dokumentacji: [Instalacja Portainer]([https://docs.docker.com/engine/install/ubuntu/](https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose))
+Portainer to webowy interfejs do zarządzania Dockerem. Jest przydatny, gdy wolimy korzystać z interfejsu graficznego zamiast zarządzać kontenerami z poziomu terminala.
+Wszystko, co opisano w tym poradniku, pochodzi z oficjalnej dokumentacji: [Instalacja Portainer CE](https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose).
 
 ### 1. Plik compose
 
-Poniżej zmodyfikowany plik docker compose, aby stworzyć i uruchomić portainer:
+Poniżej znajduje się zmodyfikowany plik Docker Compose, który służy do utworzenia i uruchomienia Portainera:
 ```
 services:
   portainer:
@@ -23,25 +23,25 @@ services:
     network_mode: bridge
 ```
 
-Moje modyfikacje to:
-- restart: *unless-stopped* zamiast *always*
-- volumes: data wskazuje na folder w moim home
-- network_mode: chcę żeby portainer korzystał z domyślnej sieci
+Wprowadzone przeze mnie zmiany:
+- `restart`: używam `unless-stopped` zamiast `always`.
+- `volumes`: dane są zapisywane w katalogu w moim katalogu domowym.
+- `network_mode`: Portainer korzysta z domyślnej sieci.
 
 Otwórz terminal i połącz się z serwerem:
 ```
 ssh USER@192.168.XXX.XXX
 ```
 
-Przed uruchomieniem pliku tworzymy folder *portainer* (wewnątrz folderu *docker* utowrzonego po instalacji dockera). Upewnij się, że jesteś w */home/USER*:
+Przed uruchomieniem pliku tworzymy katalog *portainer* wewnątrz katalogu *docker*, utworzonego podczas konfiguracji Dockera. Upewniamy się, że znajdujemy się w katalogu */home/USER*:
 ```
 pwd
 ```
-Powinno pokazać */home/USER* (USER to nazwa usera jaką podałeś przy instalacji Ubuntu - w moim przypadku *bk*). Jeśli nie to wywołaj: 
+Polecenie powinno zwrócić ścieżkę */home/USER* (USER to nazwa użytkownika podana podczas instalacji Ubuntu; w moim przypadku jest to *bk*). Jeśli wynik jest inny, uruchamiamy:
 ```
 cd
 ```
-A teraz utworzenie potrzebnych folderów i pliku:
+Następnie tworzymy potrzebne katalogi i plik:
 ```
 cd docker
 mkdir portainer
@@ -49,54 +49,51 @@ mkdir portainer/data
 cd portainer
 touch docker-compose.yml
 ```
-Wklejamy zawartość pliku compose do *docker-compose.yml*. Skopiuj kod wyżej, a następnie:
+Wklejamy zawartość pliku Compose do *docker-compose.yml*. Kopiujemy powyższy kod, a następnie uruchamiamy:
 ```
 nano docker-compose.yml
-Ctrl+Shift+V -> wklei tekst
-Zmień USER na swojego usera, np. bk
-Ctrl+O -> zapyta czy zapisać
+Ctrl+Shift+V -> wklej tekst
+Zmień USER na swoją nazwę użytkownika, np. bk
+Ctrl+O -> zapisz plik
 Enter -> potwierdź zapis
 Ctrl+X -> zamknij plik
 ```
 ---
 ### 2. Utworzenie kontenera
 
-Teraz uruchamiamy komendę (będąc w */home/USER/docker/portainer*):
+Teraz uruchamiamy polecenie, będąc w katalogu */home/USER/docker/portainer*:
 ```
 sudo docker compose up -d
 ```
-Czekamy chwilę i kontener powinien zostać uruchomiony.
+Po chwili kontener powinien się uruchomić.
 
 ### 3. Konfiguracja wstępna
 
-Przy instalacji Ubuntu na samym końcu sprawdzaliśmy IP naszego serwera w sieci. Teraz musimy użyć tego IP, żeby skonfigurować portainer. 
-Otwieramy przeglądarkę i wpisujemy adres:
+Pod koniec instalacji Ubuntu sprawdzaliśmy adres IP serwera. Użyjemy go teraz do konfiguracji Portainera. Otwieramy przeglądarkę i wpisujemy adres:
 ```
 https://IP:9443
 ```
-Możliwe, że trzeba będzie zaakceptować ryzyko (braku certyfikatu https), ale to nasz serwer więc akceptujemy. Powinno wyświetlić się:
+Może być konieczne zaakceptowanie ostrzeżenia o braku certyfikatu HTTPS. Ponieważ łączymy się z własnym serwerem, akceptujemy je. Powinien wyświetlić się następujący ekran:
 
-<img width="1401" height="883" alt="image" src="https://github.com/user-attachments/assets/ba068759-6f7d-4c52-a99a-0bf89770fdb5" />
+<img width="1401" height="883" alt="Portainer admin account setup" src="../assets/images/portainer-admin-account-setup.png" />
 
-Wpisujemy nazwę naszego admina i dwukrotnie hasło.
-Następnie wracamy do terminala i uruchamiamy:
+Wpisujemy nazwę administratora i dwukrotnie podajemy hasło. Następnie wracamy do terminala i uruchamiamy:
 ```
 sudo docker logs portainer
 ```
-i kopiujemy wartość pola *setup_token=345kjh345hk;j3245kjh23k5jhk...*
+Kopiujemy wartość pola *setup_token=345kjh345hk;j3245kjh23k5jhk...*.
 
-Może się zdarzyć, że zamiast panelu do tworzenia usera zobaczymy błąd z sugestią, żeby zrestartować kontener. Wtedy wracamy do terminala do */home/USER/docker/portainer*
-i uruchamiamy:
+Zamiast formularza tworzenia konta użytkownika może pojawić się komunikat o błędzie z sugestią ponownego uruchomienia kontenera. W takim przypadku wracamy w terminalu do katalogu */home/USER/docker/portainer* i uruchamiamy:
 ```
 sudo docker compose down
 sudo docker compose up -d
 sudo docker logs portainer
 ```
 
-Od razu kopiujemy *setup_token*, odświeżamy stronę w przeglądarce i uzupełniamy wszystkie pola. Pomijamy krok, w którym proponuje nam Edge Agents. Powinniśmy zobaczyć to:
+Od razu kopiujemy *setup_token*, odświeżamy stronę w przeglądarce i uzupełniamy wszystkie pola. Pomijamy etap konfiguracji Edge Agents. Powinien wyświetlić się następujący ekran:
 
-<img width="1181" height="630" alt="image" src="https://github.com/user-attachments/assets/fcebfa93-6723-484a-a849-2fa9ffb6aff3" />
+<img width="1181" height="630" alt="Portainer environment selection" src="../assets/images/portainer-environment-selection.png" />
 
-Klikamy *Home* po lewej stronie i wybieramy *local*. Teraz jesteśmy w kontekście naszego lokalnego środowiska i możemy przeglądać kontenery.
+Klikamy *Home* po lewej stronie, a następnie wybieramy *local*. Otworzy się widok lokalnego środowiska, w którym możemy przeglądać kontenery.
 
-<img width="1688" height="510" alt="image" src="https://github.com/user-attachments/assets/b5fc33ee-d76e-4ad4-aa56-c388091635fb" />
+<img width="1688" height="510" alt="Portainer local environment overview" src="../assets/images/portainer-local-environment-overview.png" />

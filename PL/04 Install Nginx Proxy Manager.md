@@ -2,7 +2,7 @@
 
 ### 1. Plik compose
 
-Poniżej plik docker compose, aby stworzyć i uruchomić nginx porxy manager:
+Poniżej znajduje się plik Docker Compose służący do utworzenia i uruchomienia Nginx Proxy Managera:
 ```
 services:
   nginx-pm:
@@ -29,7 +29,7 @@ Otwórz terminal i połącz się z serwerem:
 ssh USER@192.168.XXX.XXX
 ```
 
-Przed uruchomieniem pliku tworzymy folder *nginx-pm* (wewnątrz folderu *docker* utowrzonego po instalacji dockera). Upewnij się, że jesteś w */home/USER*:
+Przed uruchomieniem pliku tworzymy katalog *nginx-pm* wewnątrz katalogu *docker*, utworzonego podczas konfiguracji Dockera. Upewniamy się, że znajdujemy się w katalogu */home/USER*:
 ```
 cd docker
 mkdir nginx-pm
@@ -38,12 +38,12 @@ mkdir nginx-pm/letsencrypt
 cd nginx-pm
 touch docker-compose.yml
 ```
-Wklejamy zawartość pliku compose do *docker-compose.yml*. Skopiuj kod wyżej, a następnie:
+Wklejamy zawartość pliku Compose do *docker-compose.yml*. Kopiujemy powyższy kod, a następnie uruchamiamy:
 ```
 nano docker-compose.yml
-Ctrl+Shift+V -> wklei tekst
-Zmień USER na swojego usera, np. bk
-Ctrl+O -> zapyta czy zapisać
+Ctrl+Shift+V -> wklej tekst
+Zmień USER na swoją nazwę użytkownika, np. bk
+Ctrl+O -> zapisz plik
 Enter -> potwierdź zapis
 Ctrl+X -> zamknij plik
 ```
@@ -52,7 +52,7 @@ Ctrl+X -> zamknij plik
 
 ### 2. Utworzenie kontenera
 
-Teraz uruchamiamy komendę (będąc w */home/USER/docker/nginx-pm*):
+Teraz uruchamiamy polecenie, będąc w katalogu */home/USER/docker/nginx-pm*:
 ```
 sudo docker compose up -d
 ```
@@ -60,79 +60,76 @@ sudo docker compose up -d
 
 ### 3. Konfiguracja
 
-Uruchamiamy przeglądarkę i wpisujemy adres naszego servera z portem 81. Powinniśmy zobaczyć ekran tworzenia admina:
+Otwieramy przeglądarkę i wpisujemy adres serwera z portem 81. Powinien wyświetlić się ekran tworzenia konta administratora:
 
-<img width="806" height="767" alt="image" src="https://github.com/user-attachments/assets/12dab6e7-757a-4c14-8284-cac6a15f76d3" />
-
-
-Po utworzeniu admina zobaczymy poniższy ekran:
-
-<img width="1172" height="391" alt="image" src="https://github.com/user-attachments/assets/a3832f92-d53c-413a-be28-e1918da79e0f" />
+<img width="806" height="767" alt="Nginx Proxy Manager admin account setup" src="../assets/images/nginx-proxy-manager-admin-setup.png" />
 
 
-Klikamy w Certificates, gdzie zobaczymy jedynie przycisk do utworzenia nowego certyfikatu. Wrócimy do tego później.
+Po utworzeniu konta administratora zobaczymy następujący ekran:
+
+<img width="1172" height="391" alt="Nginx Proxy Manager dashboard" src="../assets/images/nginx-proxy-manager-dashboard.png" />
+
+
+Klikamy *Certificates*. Zobaczymy tam przycisk umożliwiający utworzenie nowego certyfikatu. Wrócimy do tego później.
 
 #### Serwis DNS
 
-Do certyfikatu będziemy potrzebowali domeny i serwisu DNS. Jedną z (wielu!) darmowych opcji jest Dynu: [link](https://www.dynu.com/).
-Polecam założyć konto i zalogować się. Wtedy na ekranie startowym w prawym górnym rogu klikamy na koła zębate i zobaczymy ten ekran:
+Do utworzenia certyfikatu potrzebujemy domeny i usługi DNS. Jedną z wielu darmowych opcji jest Dynu ([strona Dynu](https://www.dynu.com/)).
+Zakładamy konto i logujemy się. Następnie na ekranie startowym klikamy ikonę koła zębatego w prawym górnym rogu. Powinien wyświetlić się ten ekran:
 
-<img width="1527" height="726" alt="image" src="https://github.com/user-attachments/assets/05872d20-a191-44e2-ac09-ccf4658e3bb2" />
+<img width="1527" height="726" alt="Dynu account settings" src="../assets/images/dynu-account-settings.png" />
 
 
-Wchodzimy w *DDNS Services* i po prawej strone klikamy *+Add*, a później wybieramy nazwę domeny i rozszerzenie z tego co jest dostępne:
+Otwieramy *DDNS Services* i klikamy *+Add* po prawej stronie. Następnie wybieramy dostępną nazwę domeny i jej rozszerzenie:
 
-<img width="1456" height="405" alt="image" src="https://github.com/user-attachments/assets/dc55c490-e5e1-4286-bf36-08e375df94c9" />
+<img width="1456" height="405" alt="Dynu add DDNS domain screen" src="../assets/images/dynu-add-ddns-domain.png" />
 
-Klikamy *+Add* i w kolejnym kroku w polu IP wpisujemy lokalny adres naszego serwera, a później *Save*:
+Klikamy *+Add*. W kolejnym kroku wpisujemy lokalny adres IP serwera w polu *IP*, a następnie klikamy *Save*:
 
-<img width="807" height="602" alt="image" src="https://github.com/user-attachments/assets/a0060817-b155-490f-9738-35bd3962dc33" />
+<img width="807" height="602" alt="Dynu DDNS local IP address configuration" src="../assets/images/dynu-ddns-ip-address.png" />
 
-Wracając na ekran *DDNS Services* powinniśmy zobaczyć nasz adres:
+Po powrocie do ekranu *DDNS Services* powinniśmy zobaczyć utworzony adres:
 
-<img width="1484" height="382" alt="image" src="https://github.com/user-attachments/assets/53507083-e72d-450e-95ec-92a95bc5fcdb" />
+<img width="1484" height="382" alt="Dynu DDNS services list" src="../assets/images/dynu-ddns-service-list.png" />
 
-Teraz wracamy na ekran usług (kliknij w koła zębate w rogu strony) i wybieramy *API Credentials*. Jeśli nie mamy wygenerowanego klucza api, to 
-generujemy je przyciskiem *Generate API Credentials*. Później podglądamy wartość API Key i ją kopiujemy.
+Wracamy do ekranu usług, klikamy ikonę koła zębatego w rogu strony i wybieramy *API Credentials*. Jeśli nie mamy jeszcze klucza API, generujemy go przyciskiem *Generate API Credentials*. Następnie wyświetlamy wartość *API Key* i kopiujemy ją.
 
-<img width="1467" height="752" alt="image" src="https://github.com/user-attachments/assets/f12c53c6-fb2d-4fff-b824-af1689703f14" />
+<img width="1467" height="752" alt="Dynu API credentials" src="../assets/images/dynu-api-credentials.png" />
 
 #### Utworzenie certyfikatu
 
-Wracamy na stronę certyfikatów e Nginx, klikamy *Add certificate* i wybieramy opcję *Let's Encrypt via DNS*:
+Wracamy do strony certyfikatów w Nginx Proxy Managerze, klikamy *Add certificate* i wybieramy opcję *Let's Encrypt via DNS*:
 
-<img width="1075" height="600" alt="image" src="https://github.com/user-attachments/assets/ad57c2a9-df70-4de9-8d1b-357028fce4a7" />
+<img width="1075" height="600" alt="Nginx Proxy Manager add DNS certificate screen" src="../assets/images/nginx-proxy-manager-add-dns-certificate.png" />
 
-Wpowadzamy tam adres naszej domeny, wybieramy providera Dynu i wklejamy klucz API, który skopiowaliśmy wcześniej. Następnie klikamy *Save* i czekamy cierpliwie na
-efekt (to może zająć nawet ponad minutę):
+Wpisujemy adres domeny, wybieramy dostawcę Dynu i wklejamy wcześniej skopiowany klucz API. Następnie klikamy *Save* i czekamy na wynik. Może to potrwać ponad minutę:
 
-<img width="527" height="823" alt="image" src="https://github.com/user-attachments/assets/4e25a105-a29b-4113-a208-41a742ccc7b6" />
+<img width="527" height="823" alt="Let's Encrypt DNS certificate request using Dynu" src="../assets/images/letsencrypt-dynu-certificate-request.png" />
 
-Gdy operacja się zakończy powinniśmy zobaczyć nowy certyfikat:
+Po zakończeniu operacji powinniśmy zobaczyć nowy certyfikat:
 
-<img width="923" height="350" alt="image" src="https://github.com/user-attachments/assets/49d86fb0-2a2e-4b49-823b-10539b1f7612" />
+<img width="923" height="350" alt="Nginx Proxy Manager certificate list" src="../assets/images/letsencrypt-certificate-list.png" />
 
-W razie problemów zobacz sekcję na końcu tego pliku / strony.
+W razie problemów zajrzyj do sekcji na końcu tego dokumentu.
 
 #### Tworzenie proxy host
 
-Kiedy mamy już certyfikat możemy stworzyć przekierowanie adresu domenowego na ip naszego serwera z odpowiednim portem i certyfikatem. Przechodzimy
-w nginx do *Dashboard* a później *Proxy Hosts* i klikamy *Add proxy host*, wypełniając pola jak poniżej:
+Po uzyskaniu certyfikatu możemy skonfigurować przekierowanie z domeny na adres IP serwera i odpowiedni port. W Nginx Proxy Managerze przechodzimy do *Dashboard*, a następnie do *Proxy Hosts*. Klikamy *Add proxy host* i wypełniamy pola jak na zrzucie:
 
-<img width="1048" height="634" alt="image" src="https://github.com/user-attachments/assets/82bcb819-eb1a-4d34-9ade-ca33a1751af7" />
+<img width="1048" height="634" alt="Nginx Proxy Manager add proxy host configuration" src="../assets/images/nginx-proxy-manager-add-proxy-host.png" />
 
-Teraz możemy wykorzystać proxy, żeby zobaczyć efekt. Poniżej strona z adresem bezpośrednim przez IP (zwróć uwagę że jest *Not secure*):
+Teraz możemy sprawdzić działanie proxy. Poniżej widoczna jest strona otwarta bezpośrednio przez adres IP (zwróć uwagę na komunikat *Not secure*):
 
-<img width="1077" height="442" alt="image" src="https://github.com/user-attachments/assets/0c493977-4d14-4bea-a2a5-44df7b66410c" />
+<img width="1077" height="442" alt="Website accessed directly by IP without HTTPS" src="../assets/images/nginx-proxy-manager-ip-access-warning.png" />
 
-A gdy wpiszemy w adres nasz nowo utworzony adres proxy efekt jest następujący (secure i nie ma już adresu ip):
+Po wpisaniu nowo utworzonego adresu proxy strona wygląda następująco: połączenie jest bezpieczne, a adres IP nie jest widoczny w pasku adresu.
 
-<img width="1225" height="532" alt="image" src="https://github.com/user-attachments/assets/85d848ef-c5ca-4e89-b35c-f6cfa3575381" />
+<img width="1225" height="532" alt="Website accessed through a secure proxy domain" src="../assets/images/nginx-proxy-manager-secure-domain-access.png" />
 
-Możemy ustawić teraz proxy dla portainer:
+Teraz możemy skonfigurować proxy dla Portainera:
 
-<img width="1365" height="832" alt="image" src="https://github.com/user-attachments/assets/beeca8a3-7a5d-4115-81f3-8f497498b767" />
-<img width="1382" height="627" alt="image" src="https://github.com/user-attachments/assets/2257972c-3c7e-40e7-a63d-0ac91e19dd47" />
+<img width="1365" height="832" alt="Portainer proxy host configuration" src="../assets/images/portainer-proxy-host-configuration.png" />
+<img width="1382" height="627" alt="Portainer accessed through a secure domain" src="../assets/images/portainer-secure-domain-access.png" />
 
 ---
 
@@ -140,22 +137,19 @@ Możemy ustawić teraz proxy dla portainer:
 
 #### Dostępność domen w internecie
 
-Istotne jest to, że te przekierowania proxy będą działać wyłącznie w sieci lokalnej. Na zewnątrz te domeny nie są dostępne! 
-Ktokolwiek wpisze adres w swoim komputerze w innej sieci zostanie po prostu przekierowany na adres 192.168.0.141 w sieci, w której aktualnie się znajduje
-i najprawdopodobniej dostanie błąd o nieistniejącej stronie. W tej konfiguracji NIE wychodzimy poza sieć lokalną i nic nie udostępniamy w internecie!
+Te przekierowania proxy działają wyłącznie w sieci lokalnej, więc domeny nie są dostępne z zewnątrz. Osoba, która wpisze taki adres na komputerze podłączonym do innej sieci, zostanie skierowana na adres `192.168.0.141` w swojej sieci i najprawdopodobniej zobaczy błąd informujący, że strona nie istnieje. W tej konfiguracji nie udostępniamy usług poza siecią lokalną ani w internecie.
 
-#### Konfiguracje kontenerów
+#### Konfiguracja proxy dla kontenerów
 
-Od teraz przy każdym nowym kontenerze, który ma interfejs webowy możesz ustawić proxy hosta, który pozwoli uruchamiać UI wpisując adres Twojej domeny, np.
-*moj-kontener.super-server.mytunnel.org*
+Dla każdego nowego kontenera z interfejsem webowym możemy skonfigurować proxy hosta. Dzięki temu jego interfejs otworzymy pod adresem domenowym, np. *moj-kontener.super-server.mytunnel.org*.
 
 #### Problemy
 
-W trakcie generowania certyfikatu mogą się pojawić błędy:
-- upewnij się żę nie ma spacji w okienku z kluczem *dns_dynu_auth_token = YOUR_DYNU_AUTH_TOKEN* - usuń spacje przy znaku *=*
-- Internal Server Error - prawdopodobnie za dużo osób już wysłało request o certyfikat do rozszerzenia domeny, którą wybrałeś (np. mytunnel.org) i możliwe, że będziesz musiał wybrać inną
-- Timeout - odpowiedź nie nadeszła lub wyskoczył błąd - trzeba próbować ponownie i ustawić wartość liczbową w ostatnim polu na więcej niż 120
-- Ładowanie w nieskończoność - zwróć uwagę na to czy w tle okienka nie pojawił się już certyfikat, czasami okienko się blokuje i nie znika, mimo że operacja już zakończyła się sukcesem
+Podczas generowania certyfikatu mogą wystąpić następujące problemy:
+- **Brak certyfikatu:** upewnij się, że w polu z kluczem `dns_dynu_auth_token=YOUR_DYNU_AUTH_TOKEN` nie ma zbędnych spacji, szczególnie wokół znaku `=`.
+- **Internal Server Error:** prawdopodobnie osiągnięto limit żądań certyfikatu dla wybranego rozszerzenia domeny (np. `mytunnel.org`). Spróbuj wybrać inną domenę.
+- **Timeout:** upłynął limit czasu oczekiwania na odpowiedź albo wystąpił błąd. Spróbuj ponownie i ustaw w ostatnim polu wartość większą niż 120.
+- **Niekończące się ładowanie:** sprawdź, czy certyfikat nie pojawił się już w tle okna. Czasami okno zawiesza się i nie znika, mimo że operacja zakończyła się powodzeniem.
 
 
 

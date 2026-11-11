@@ -2,17 +2,17 @@
 
 ### 0. Dokumentacja
 
-Wszystko co tutaj jest wymienione pochodzi z oficjalnej dokumentacji: [Instalacja Docker - Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+Wszystko, co opisano w tym poradniku, pochodzi z oficjalnej dokumentacji: [Instalacja Dockera w systemie Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
 
 
-### 1. Ustawienie repozytorium docker
+### 1. Konfiguracja repozytorium Dockera
 
 Otwórz terminal i połącz się z serwerem:
 ```
 ssh USER@192.168.XXX.XXX
 ```
 
-W terminalu wywołujemy po kolei komendy z dokumentacji:
+W terminalu uruchamiamy kolejno polecenia z dokumentacji:
 ```
 sudo apt update
 sudo apt install ca-certificates curl
@@ -37,9 +37,9 @@ sudo apt update
 
 ---
 
-### 2. Instalacja paczek
+### 2. Instalacja pakietów
 
-Po aktualizacji apt (z poprzedniego kroku), wywołujemy komendę instalacyjną:
+Po aktualizacji pakietów APT z poprzedniego kroku uruchamiamy polecenie instalacyjne:
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
@@ -47,11 +47,11 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 
 ### 3. Uruchomienie
 
-Po zakończonej instalacji sprawdzamy status dockera:
+Po zakończeniu instalacji sprawdzamy status usługi Docker:
 ```
 sudo systemctl status docker
 ```
-Jeśli nie jest 'enabled', to uruchamiamy:
+Jeśli usługa nie jest aktywna (`active`), uruchamiamy ją poleceniem:
 ```
 sudo systemctl start docker
 ```
@@ -59,11 +59,11 @@ sudo systemctl start docker
 
 ### 4. Utworzenie folderu na konfiguracje i dane kontenerów
 
-Tworzymy folder w którym będziemy przechowywać dane z dockera:
+Tworzymy katalog, w którym będziemy przechowywać konfiguracje i dane Dockera:
 ```
 mkdir docker
 ```
 ---
 
-**mocno polecam ten poradnik traktować jako przedawniony i skorzystać z oficjalnej strony dockera podanej na początku**
+**Zdecydowanie polecam traktować ten poradnik jako nieaktualny i skorzystać z oficjalnej dokumentacji Dockera podanej na początku.**
 
