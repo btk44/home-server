@@ -77,8 +77,8 @@ If you want to disable creating new accounts after setting up your own account, 
 
 - restart the container:
   ```bash
-  sudo docker compose --file compose.vaultwarden.yml --env-file ../.env down
-  sudo docker compose --file compose.vaultwarden.yml --env-file ../.env up
+  sudo docker compose --file vaultwarden/compose.vaultwarden.yml --env-file .env down
+  sudo docker compose --file vaultwarden/compose.vaultwarden.yml --env-file .env up -d
   ```
 
 #### > Bitwarden Browser Extension
