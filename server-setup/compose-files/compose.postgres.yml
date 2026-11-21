@@ -1,4 +1,3 @@
-
 services:
   postgres:
     image: postgres:${POSTGRES_VERSION:-latest}
@@ -11,7 +10,7 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
-      - ${DOCKER_SETUP_DIR}/postgres/data:/var/lib/postgresql/data
+      - ${DOCKER_SETUP_DIR}/postgres/data:/var/lib/postgresql
 
 networks:
   app-network:
