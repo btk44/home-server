@@ -1,0 +1,1 @@
+this is direcotry for storing shared server files.

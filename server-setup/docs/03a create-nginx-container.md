@@ -8,7 +8,7 @@
   nano nginx-pm/nginx-pm.compose.yml
   ```
 
-- paste the content of [nginx-pm.compose.yml](./setup/templates/nginx-pm.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [nginx-pm.compose.yml](../config/templates/nginx-pm.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 
 - open `.env` file and add nginx section:
   ```bash
@@ -38,7 +38,7 @@
 
 - in a web browser go to address: `192.168.x.x:81` (your server admin port) and fill admin user account information to create it
 - you should see home panel
-<img alt="Nginx Proxy Manager dashboard" src="../assets/images/nginx-proxy-manager-dashboard.png" />
+<img alt="Nginx Proxy Manager dashboard" src="../../assets/images/nginx-proxy-manager-dashboard.png" />
 - click *Certificates* and leave the panel there for now. We need to set up free DNS first
 
 #### > Free DNS setup
@@ -47,24 +47,24 @@ To create a certificate, you need a domain and a DNS service. One of many free o
 - create an account and log in
 - on the home screen, click the settings gear icon in the top right corner. You should see this screen:
 
-  <img alt="Dynu account settings" src="../assets/images/dynu-account-settings.png" />
+  <img alt="Dynu account settings" src="../../assets/images/dynu-account-settings.png" />
 
 - open *DDNS Services* and click *+Add* on the right side, then select an available domain name and its extension:
 
-   <img alt="Dynu add DDNS domain screen" src="../assets/images/dynu-add-ddns-domain.png" />
+   <img alt="Dynu add DDNS domain screen" src="../../assets/images/dynu-add-ddns-domain.png" />
 
 - click *+Add*. In the next step, enter your server's local IP address in the *IP* field, then click *Save*:
 
-  <img alt="Dynu DDNS local IP address configuration" src="../assets/images/dynu-ddns-ip-address.png" />
+  <img alt="Dynu DDNS local IP address configuration" src="../../assets/images/dynu-ddns-ip-address.png" />
 
 - after returning to the *DDNS Services* screen, you should see the created address:
 
-  <img alt="Dynu DDNS services list" src="../assets/images/dynu-ddns-service-list.png" />
+  <img alt="Dynu DDNS services list" src="../../assets/images/dynu-ddns-service-list.png" />
 
 - return to the services screen, click the settings gear icon in the corner, and select *API Credentials*
 - if you don't have an API key yet, generate it with the *Generate API Credentials* button, then reveal the *API Key* value and copy it
 
-  <img  alt="Dynu API credentials" src="../assets/images/dynu-api-credentials.png" />
+  <img  alt="Dynu API credentials" src="../../assets/images/dynu-api-credentials.png" />
 
 #### > Request Certificate
 
@@ -73,7 +73,7 @@ To create a certificate, you need a domain and a DNS service. One of many free o
 - enter your domain address, select Dynu as the provider, and paste the API key you copied earlier
 - click *Save* and wait for the result. This may take over a minute:
 
-  <img alt="Let's Encrypt DNS certificate request using Dynu" src="../assets/images/letsencrypt-dynu-certificate-request.png" />
+  <img alt="Let's Encrypt DNS certificate request using Dynu" src="../../assets/images/letsencrypt-dynu-certificate-request.png" />
 
 - after the operation completes, you should see the new certificate opn the list
 - if you encounter any issues, see the section at the end of this document
@@ -85,16 +85,16 @@ To create a certificate, you need a domain and a DNS service. One of many free o
 - click *Add proxy host* and fill in the fields as shown below.
   **important note:** instead of **192.168.0.141** you can also provide container name with internal port, i.e. **nginx-pm** (container name from compose file) and **81** (in-container port) 
 
-  <img alt="Nginx Proxy Manager add proxy host configuration" src="../assets/images/nginx-proxy-manager-add-proxy-host.png" />
+  <img alt="Nginx Proxy Manager add proxy host configuration" src="../../assets/images/nginx-proxy-manager-add-proxy-host.png" />
 
 
 - now you can test the proxy. Below is a screenshot of the website accessed directly by IP address (note the *Not secure* warning):
 
-  <img alt="Website accessed directly by IP without HTTPS" src="../assets/images/nginx-proxy-manager-ip-access-warning.png" />
+  <img alt="Website accessed directly by IP without HTTPS" src="../../assets/images/nginx-proxy-manager-ip-access-warning.png" />
 
 - when you enter the newly created proxy address, the website looks like this: the connection is secure, and the IP address is not visible in the address bar
 
-  <img  alt="Website accessed through a secure proxy domain" src="../assets/images/nginx-proxy-manager-secure-domain-access.png" />
+  <img  alt="Website accessed through a secure proxy domain" src="../../assets/images/nginx-proxy-manager-secure-domain-access.png" />
 
 #### > Notes
 

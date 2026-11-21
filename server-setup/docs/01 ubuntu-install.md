@@ -9,7 +9,7 @@ Navigation in the installer is performed using the following keys: arrow keys �
 
 After starting the computer from the installation media (USB drive or ISO image), the GRUB menu appears. We select the default option **Try or Install Ubuntu Server** and confirm with Enter.
 
-<img width="675" height="369" alt="Ubuntu Server GRUB boot menu" src="../assets/images/ubuntu-grub-menu.png" />
+<img width="675" height="369" alt="Ubuntu Server GRUB boot menu" src="../../assets/images/ubuntu-grub-menu.png" />
 
 ---
 
@@ -17,7 +17,7 @@ After starting the computer from the installation media (USB drive or ISO image)
 
 We select **English (UK)**. This way, the date and time format is similar to Polish standards (day/month/year, 24-hour clock), and the system remains in English, which makes it easier to find solutions to problems on the internet.
 
-<img width="1274" height="330" alt="Ubuntu installer language selection" src="../assets/images/ubuntu-language-selection.png" />
+<img width="1274" height="330" alt="Ubuntu installer language selection" src="../../assets/images/ubuntu-language-selection.png" />
 
 ---
 
@@ -28,7 +28,7 @@ We select **English (UK)**. This way, the date and time format is similar to Pol
 
 We do not select any additional options. We keep the standard Polish keyboard layout (programmer).
 
-<img width="1272" height="271" alt="Ubuntu keyboard layout selection" src="../assets/images/ubuntu-keyboard-layout.png" />
+<img width="1272" height="271" alt="Ubuntu keyboard layout selection" src="../../assets/images/ubuntu-keyboard-layout.png" />
 
 ---
 
@@ -36,7 +36,7 @@ We do not select any additional options. We keep the standard Polish keyboard la
 
 We select **Ubuntu Server** (the regular version, **not** *minimized*). The option *Search for third-party drivers* we leave unchecked.
 
-<img width="1272" height="414" alt="Ubuntu Server installation type" src="../assets/images/ubuntu-server-install-type.png" />
+<img width="1272" height="414" alt="Ubuntu Server installation type" src="../../assets/images/ubuntu-server-install-type.png" />
 
 ---
 
@@ -46,7 +46,7 @@ We select **Ubuntu Server** (the regular version, **not** *minimized*). The opti
 
 If a cable is connected, the network should be detected automatically, and the interface (e.g., `enp1s0`) will receive an IP address from DHCP (in the screenshot: `192.168.122.195/24`).
 
-<img width="1272" height="312" alt="Ubuntu Ethernet network configuration" src="../assets/images/ubuntu-network-ethernet.png" />
+<img width="1272" height="312" alt="Ubuntu Ethernet network configuration" src="../../assets/images/ubuntu-network-ethernet.png" />
 
 #### Wi-Fi
 
@@ -57,7 +57,7 @@ If the computer has a Wi-Fi card, it can be configured via **Edit Wi-Fi**:
 3. We confirm by clicking the **Save** button.
 4. **Before proceeding, we wait for the connection to be established and the interface to receive an IP address.**
 
-<img width="749" height="321" alt="Ubuntu Wi-Fi configuration" src="../assets/images/ubuntu-wifi-configuration.png" />
+<img width="749" height="321" alt="Ubuntu Wi-Fi configuration" src="../../assets/images/ubuntu-wifi-configuration.png" />
 
 #### IP Address
 
@@ -74,7 +74,7 @@ Alternatively, you can set up an address reservation (DHCP reservation) in the r
 
 The **Proxy address** field we leave **empty** (we do not use a proxy).
 
-<img width="1272" height="312" alt="Ubuntu proxy configuration" src="../assets/images/ubuntu-proxy-configuration.png" />
+<img width="1272" height="312" alt="Ubuntu proxy configuration" src="../../assets/images/ubuntu-proxy-configuration.png" />
 
 ---
 
@@ -83,7 +83,7 @@ The **Proxy address** field we leave **empty** (we do not use a proxy).
 
 The installer by default suggests a mirror server corresponding to our location (e.g., `http://pl.archive.ubuntu.com/ubuntu/`). We keep the default address and wait for the server test to complete (the message *The mirror location is being tested*), and then proceed.
 
-<img width="1272" height="388" alt="Ubuntu archive mirror configuration" src="../assets/images/ubuntu-archive-mirror.png" />
+<img width="1272" height="388" alt="Ubuntu archive mirror configuration" src="../../assets/images/ubuntu-archive-mirror.png" />
 
 ---
 
@@ -99,7 +99,7 @@ The installer by default suggests a mirror server corresponding to our location 
 
 **Warning:** installation **overwrites the entire selected disk** – all data on it will be lost.
 
-<img width="1272" height="500" alt="Ubuntu disk setup with LVM" src="../assets/images/ubuntu-disk-setup-lvm.png" />
+<img width="1272" height="500" alt="Ubuntu disk setup with LVM" src="../../assets/images/ubuntu-disk-setup-lvm.png" />
 
 #### Screen 2 – Layout Summary
 #### Variant with LVM (for flexible volume size management)
@@ -118,7 +118,7 @@ The installer shows the proposed disk layout:
 > sudo lvextend -r -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
 > ```
  
-<img width="1272" height="609" alt="Ubuntu disk layout summary with LVM" src="../assets/images/ubuntu-disk-summary-lvm.png" />
+<img width="1272" height="609" alt="Ubuntu disk layout summary with LVM" src="../../assets/images/ubuntu-disk-summary-lvm.png" />
  
 #### Variant without LVM (for a simpler layout that you do not plan to change later)
  
@@ -136,12 +136,12 @@ Differences compared to the LVM variant:
 - the layout is simpler, but later changes in size, combining disks into shared space, and creating snapshots are less convenient than with LVM.
 > **Note:** on computers with UEFI (not classic BIOS as in the screenshot), the installer will additionally add a small EFI partition (`/boot/efi`).
  
-<img width="1581" height="466" alt="Ubuntu disk layout without LVM" src="../assets/images/ubuntu-disk-setup-no-lvm.png" />
+<img width="1581" height="466" alt="Ubuntu disk layout without LVM" src="../../assets/images/ubuntu-disk-setup-no-lvm.png" />
 
 #### Not sure what to choose? 
 I recommend starting with the LVM variant and immediately allocating 100% of free space to `/`. To do this, we press space at the `ubuntu-lv` position, select `Edit`, enter the maximum value in the `Size` field, and then select `Save`.
 
-<img width="1582" height="698" alt="Ubuntu LVM logical volume size configuration" src="../assets/images/ubuntu-lvm-volume-size.png" />
+<img width="1582" height="698" alt="Ubuntu LVM logical volume size configuration" src="../../assets/images/ubuntu-lvm-volume-size.png" />
 
 
 ---
@@ -158,7 +158,7 @@ We complete the data:
 
 A password is also needed to execute commands via `sudo`, even when we later log in via SSH.
 
-<img width="1272" height="417" alt="Ubuntu user profile setup" src="../assets/images/ubuntu-user-profile.png" />
+<img width="1272" height="417" alt="Ubuntu user profile setup" src="../../assets/images/ubuntu-user-profile.png" />
 
 ---
 
@@ -166,7 +166,7 @@ A password is also needed to execute commands via `sudo`, even when we later log
 
 We select **Skip for now** – we do not activate Ubuntu Pro. If needed, it can be done later with the `pro attach` command.
 
-<img width="1272" height="298" alt="Ubuntu Pro selection screen" src="../assets/images/ubuntu-pro-skip.png" />
+<img width="1272" height="298" alt="Ubuntu Pro selection screen" src="../../assets/images/ubuntu-pro-skip.png" />
 
 ---
 
@@ -183,7 +183,7 @@ Connection from another computer:
 ssh bk@<server-ip-address>
 ```
 
-<img width="1272" height="338" alt="Ubuntu OpenSSH server setup" src="../assets/images/ubuntu-ssh-setup.png" />
+<img width="1272" height="338" alt="Ubuntu OpenSSH server setup" src="../../assets/images/ubuntu-ssh-setup.png" />
 
 ---
 
@@ -191,7 +191,7 @@ ssh bk@<server-ip-address>
 
 We do not check any package – we install only the base system. We proceed with the **Done** button. Everything that is needed can be installed later.
 
-<img width="1272" height="456" alt="Ubuntu featured server snaps selection" src="../assets/images/ubuntu-featured-server-snaps.png" />
+<img width="1272" height="456" alt="Ubuntu featured server snaps selection" src="../../assets/images/ubuntu-featured-server-snaps.png" />
 
 ---
 

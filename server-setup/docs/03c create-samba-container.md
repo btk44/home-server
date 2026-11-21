@@ -8,7 +8,7 @@
   nano samba/samba.compose.yml
   ```
 
-- paste the content of [samba.compose.yml](./setup/templates/samba.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [samba.compose.yml](../config/templates/samba.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
   This file contains two users and two shares. One is an admin user with access to all data directory and the other user has access to his directory only. Admin user is just a fake access user. All files saved physically on docker host system will be owned by default USER_X.
 - create directory for default USER_X:
   ```bash 

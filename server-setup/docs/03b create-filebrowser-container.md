@@ -8,7 +8,7 @@
   nano filebrowser/filebrowser.compose.yml
   ```
 
-- paste the content of [filebrowser.compose.yml](./setup/templates/filebrowser.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [filebrowser.compose.yml](../config/templates/filebrowser.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 - create directory for default USER_X:
   ```bash 
   mkdir -p ~/docker/data/users/USER_X
@@ -29,7 +29,7 @@
   touch filebrowser/data/config.yaml
   nano filebrowser/data/config.yaml
   ```
-- paste the content of [filebrowser.config.yml](./setup/templates/filebrowser.config.yml) and save `ctrl+o --> enter --> ctrl+x`. 
+- paste the content of [filebrowser.config.yml](../config/templates/filebrowser.config.yml) and save `ctrl+o --> enter --> ctrl+x`. 
 - run the container:
   ```bash
   sudo docker compose --file filebrowser/filebrowser.compose.yml --env-file .env up
@@ -58,4 +58,4 @@
   - alternatively you can look throgh other settings you may want to change
 
 - if you have Nginx Proxy Manager set up you can set a proxy host for filebrowser as shown
-  <img alt="Nginx Proxy Manager add proxy host configuration" src="../assets/images/filebrowser-proxy-host-configuration.png" />
+  <img alt="Nginx Proxy Manager add proxy host configuration" src="../../assets/images/filebrowser-proxy-host-configuration.png" />

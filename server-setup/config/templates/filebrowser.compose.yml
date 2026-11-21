@@ -1,7 +1,7 @@
 services:
   filebrowser:
     image: ghcr.io/gtsteffaniak/filebrowser:${FILEBROWSER_VERSION:-stable}
-    container_name: filebrowser-quantum
+    container_name: filebrowser
     restart: ${RESTART_POLICY}
     user: "${PUID}:${PGID}"
     security_opt:

@@ -8,7 +8,7 @@
   nano vaultwarden/vaultwarden.compose.yml
   ```
 
-- paste the content of [vaultwarden.compose.yml](./setup/templates/vaultwarden.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [vaultwarden.compose.yml](../config/templates/vaultwarden.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 
 - generate admin token hash. First, install argon2 package:
   ```bash
@@ -53,7 +53,7 @@
 - click *Create account* and follow the account creation wizard, entering your email address and master password
 
 - if you have Nginx Proxy Manager set up you can set a proxy host for vaultwarden like shown:
-  <img alt="Konfiguracja proxy hosta Vaultwarden w Nginx Proxy Manager" src="../assets/images/vaultwarden-nginx-setup-2.png" />
+  <img alt="Konfiguracja proxy hosta Vaultwarden w Nginx Proxy Manager" src="../../assets/images/vaultwarden-nginx-setup-2.png" />
 
 #### > Admin Panel
 

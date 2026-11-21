@@ -49,14 +49,23 @@
 ```
 .
 └── home/user/docker/
+    ├── docs/
+    │   └── (md files)
+    ├── config/             <--- compose templates, configs, env, helpful scripts
+    │   ├── scripts/
+    │   ├── templates/
+    │   │   ├── container.compose.yml
+    │   │   ├── container.config.yml
+    │   │   ├── container.env
+    │   │   └── container.script.sh
+    │   └── run.sh
     ├── data/               <--- shared between containers, data storage (samba, filebrowser)
     │   ├── general files/
     │   └── users
     │       ├── user-1-files/
     │       └── user-2-files/
-    └── setup/              <--- compose files and all containers setup data/
+    └── setup/              <--- all setup and data files for created containers
         ├── .env            <--- all variables for docker compose files
-        ├── compose.sh      <--- helper script to run compose files easier
         ├── samba/
         │   ├── samba.compose.yml
         │   └── data/

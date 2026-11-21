@@ -8,7 +8,7 @@
   nano postgres/postgres.compose.yml
   ```
 
-- paste the content of [postgres.compose.yml](./setup/templates/postgres.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [postgres.compose.yml](../config/templates/postgres.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 
 - open `.env` file and add PostgreSQL section (**put there your values!**):
   ```bash
