@@ -4,11 +4,11 @@
   ```bash
   cd ~/docker/setup
   mkdir -p samba/data
-  touch samba/compose.samba.yml
-  nano samba/compose.samba.yml
+  touch samba/samba.compose.yml
+  nano samba/samba.compose.yml
   ```
 
-- paste the content of [compose.samba.yml](./compose-files/compose.samba.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [samba.compose.yml](./setup/templates/samba.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
   This file contains two users and two shares. One is an admin user with access to all data directory and the other user has access to his directory only. Admin user is just a fake access user. All files saved physically on docker host system will be owned by default USER_X.
 - create directory for default USER_X:
   ```bash 
@@ -31,10 +31,10 @@
 - save file `ctrl+o --> enter --> ctrl+x`
 - run the container:
   ```bash
-  sudo docker compose --file samba/compose.samba.yml --env-file .env up
+  sudo docker compose --file samba/samba.compose.yml --env-file .env up
   ```
 - look at logs to see whether the container started and hit `d` to detach if there are no issues
 - in case of issues you can detach and stop the container
   ```bash
-  sudo docker compose --file samba/compose.samba.yml --env-file .env down
+  sudo docker compose --file samba/samba.compose.yml --env-file .env down
   ```

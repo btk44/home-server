@@ -4,11 +4,11 @@
   ```bash
   cd ~/docker/setup
   mkdir -p nginx-pm/data nginx-pm/letsencrypt
-  touch nginx-pm/compose.nginx-pm.yml
-  nano nginx-pm/compose.nginx-pm.yml
+  touch nginx-pm/nginx-pm.compose.yml
+  nano nginx-pm/nginx-pm.compose.yml
   ```
 
-- paste the content of [compose.nginx-pm.yml](./compose-files/compose.nginx-pm.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [nginx-pm.compose.yml](./setup/templates/nginx-pm.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 
 - open `.env` file and add nginx section:
   ```bash
@@ -26,14 +26,14 @@
 
 - run the container:
   ```bash
-  sudo docker compose --file nginx-pm/compose.nginx-pm.yml --env-file .env up
+  sudo docker compose --file nginx-pm/nginx-pm.compose.yml --env-file .env up
   ```
 
 - look at logs to see whether the container started and hit `d` to detach if there are no issues
 
 - in case of issues you can detach and stop the container:
   ```bash
-  sudo docker compose --file nginx-pm/compose.nginx-pm.yml --env-file .env down
+  sudo docker compose --file nginx-pm/nginx-pm.compose.yml --env-file .env down
   ```
 
 - in a web browser go to address: `192.168.x.x:81` (your server admin port) and fill admin user account information to create it

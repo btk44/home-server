@@ -58,16 +58,16 @@
         ├── .env            <--- all variables for docker compose files
         ├── compose.sh      <--- helper script to run compose files easier
         ├── samba/
-        │   ├── compose.samba.yml
+        │   ├── samba.compose.yml
         │   └── data/
         ├── filebrowser/
-        │   ├── compose.filebrowser.yml
+        │   ├── filebrowser.compose.yml
         │   └── data/
         ├── vaultwarden/
-        │   ├── compose.vaultwarden.yml
+        │   ├── vaultwarden.compose.yml
         │   └── data/
         ├── postgres/
-        │   ├── compose.postgres.yml
+        │   ├── postgres.compose.yml
         │   ├── data/
         │   └── backups/
         ...

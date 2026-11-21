@@ -4,11 +4,11 @@
   ```bash
   cd ~/docker/setup
   mkdir -p vaultwarden/data
-  touch vaultwarden/compose.vaultwarden.yml
-  nano vaultwarden/compose.vaultwarden.yml
+  touch vaultwarden/vaultwarden.compose.yml
+  nano vaultwarden/vaultwarden.compose.yml
   ```
 
-- paste the content of [compose.vaultwarden.yml](./compose-files/compose.vaultwarden.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [vaultwarden.compose.yml](./setup/templates/vaultwarden.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 
 - generate admin token hash. First, install argon2 package:
   ```bash
@@ -38,14 +38,14 @@
 
 - run the container:
   ```bash
-  sudo docker compose --file vaultwarden/compose.vaultwarden.yml --env-file .env up
+  sudo docker compose --file vaultwarden/vaultwarden.compose.yml --env-file .env up
   ```
 
 - look at logs to see whether the container started and hit `d` to detach if there are no issues
 
 - in case of issues you can detach and stop the container:
   ```bash
-  sudo docker compose --file vaultwarden/compose.vaultwarden.yml --env-file .env down
+  sudo docker compose --file vaultwarden/vaultwarden.compose.yml --env-file .env down
   ```
 
 - in a web browser go to address: `192.168.x.x:7001` (your server) and you should see the Vaultwarden login screen
@@ -77,8 +77,8 @@ If you want to disable creating new accounts after setting up your own account, 
 
 - restart the container:
   ```bash
-  sudo docker compose --file vaultwarden/compose.vaultwarden.yml --env-file .env down
-  sudo docker compose --file vaultwarden/compose.vaultwarden.yml --env-file .env up -d
+  sudo docker compose --file vaultwarden/vaultwarden.compose.yml --env-file .env down
+  sudo docker compose --file vaultwarden/vaultwarden.compose.yml --env-file .env up -d
   ```
 
 #### > Bitwarden Browser Extension

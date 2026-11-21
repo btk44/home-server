@@ -4,11 +4,11 @@
   ```bash
   cd ~/docker/setup
   mkdir -p filebrowser/data
-  touch filebrowser/compose.filebrowser.yml
-  nano filebrowser/compose.filebrowser.yml
+  touch filebrowser/filebrowser.compose.yml
+  nano filebrowser/filebrowser.compose.yml
   ```
 
-- paste the content of [compose.filebrowser.yml](./compose-files/compose.filebrowser.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [filebrowser.compose.yml](./setup/templates/filebrowser.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 - create directory for default USER_X:
   ```bash 
   mkdir -p ~/docker/data/users/USER_X
@@ -29,15 +29,15 @@
   touch filebrowser/data/config.yaml
   nano filebrowser/data/config.yaml
   ```
-- paste the content of [config.filebrowser.yml](./compose-files/config.filebrowser.yml) and save `ctrl+o --> enter --> ctrl+x`. 
+- paste the content of [filebrowser.config.yml](./setup/templates/filebrowser.config.yml) and save `ctrl+o --> enter --> ctrl+x`. 
 - run the container:
   ```bash
-  sudo docker compose --file filebrowser/compose.filebrowser.yml --env-file .env up
+  sudo docker compose --file filebrowser/filebrowser.compose.yml --env-file .env up
   ```
 - look at logs to see whether the container started and hit `d` to detach if there are no issues
 - in case of issues you can detach and stop the container
   ```bash
-  sudo docker compose --file filebrowser/compose.filebrowser.yml --env-file .env down
+  sudo docker compose --file filebrowser/filebrowser.compose.yml --env-file .env down
   ```
 - create user for non-admin:
   ```bash

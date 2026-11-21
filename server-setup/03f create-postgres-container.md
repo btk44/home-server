@@ -4,11 +4,11 @@
   ```bash
   cd ~/docker/setup
   mkdir -p postgres/data
-  touch postgres/compose.postgres.yml
-  nano postgres/compose.postgres.yml
+  touch postgres/postgres.compose.yml
+  nano postgres/postgres.compose.yml
   ```
 
-- paste the content of [compose.postgres.yml](./compose-files/compose.postgres.yml) and save `ctrl+o --> enter --> ctrl+x`.
+- paste the content of [postgres.compose.yml](./setup/templates/postgres.compose.yml) and save `ctrl+o --> enter --> ctrl+x`.
 
 - open `.env` file and add PostgreSQL section (**put there your values!**):
   ```bash
@@ -27,14 +27,14 @@
 
 - run the container:
   ```bash
-  sudo docker compose --file postgres/compose.postgres.yml --env-file .env up
+  sudo docker compose --file postgres/postgres.compose.yml --env-file .env up
   ```
 
 - look at logs to see whether the container started and hit `d` to detach if there are no issues
 
 - in case of issues you can detach and stop the container:
   ```bash
-  sudo docker compose --file postgres/compose.postgres.yml --env-file .env down
+  sudo docker compose --file postgres/postgres.compose.yml --env-file .env down
   ```
 
 - verify the container is running:
