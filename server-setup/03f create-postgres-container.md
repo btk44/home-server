@@ -58,7 +58,7 @@
   ```
   then type `\q` to exit
 
-#### Connecting from other containers
+#### > Connecting from other containers
 
 If you have other containers that need to access PostgreSQL, they should:
 1. Be connected to the same Docker network (by default `app-network`)
@@ -68,4 +68,18 @@ If you have other containers that need to access PostgreSQL, they should:
 Example connection string for applications inside other containers:
 ```
 postgresql://USER_X_POSTGRES_USER:USER_X_POSTGRES_PASSWORD@postgres:5432/USER_X_POSTGRES_DB
+```
+
+#### > Nginx Proxy Stream
+
+If you want to be able to connect to postgres db using `yourdomain.com` you can create new stream in Nginx interface:
+- go to streams
+- click *Add stream*
+- Incoming port: 5432, Forward Host: postgres (*name of the container*), Forward Port: 5432
+- enable TCP switch
+- in SSL tab pick your certificate
+
+Example connection string for applications:
+```
+postgresql://USER_X_POSTGRES_USER:USER_X_POSTGRES_PASSWORD@yourdomain.com:5432/USER_X_POSTGRES_DB
 ```
