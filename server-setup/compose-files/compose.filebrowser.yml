@@ -1,0 +1,24 @@
+services:
+  filebrowser:
+    image: ghcr.io/gtsteffaniak/filebrowser:${FILEBROWSER_VERSION:-stable}
+    container_name: filebrowser-quantum
+    restart: ${RESTART_POLICY}
+    user: "${PUID}:${PGID}"
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      TZ: ${TZ}
+      FILEBROWSER_CONFIG: "data/config.yaml"
+      FILEBROWSER_ADMIN_PASSWORD: ${FILEBROWSER_ADMIN_PASSWORD}
+    ports:
+      - "${FILEBROWSER_HTTP_PORT}:80"
+    volumes:
+      - ${DOCKER_SETUP_DIR}/filebrowser/data:/home/filebrowser/data
+      - ${DOCKER_DATA_DIR}:/files
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true
+    name: ${APP_NETWORK}

@@ -1,0 +1,19 @@
+
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-latest}
+    container_name: postgres
+    restart: ${RESTART_POLICY}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - ${DOCKER_SETUP_DIR}/postgres/data:/var/lib/postgresql/data
+
+networks:
+  app-network:
+    external: true
+    name: ${APP_NETWORK}

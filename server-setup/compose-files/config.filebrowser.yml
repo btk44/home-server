@@ -1,0 +1,26 @@
+server:
+  database:
+    path: "data/filebrowser.sqlite"
+  cacheDir: "data/tmp"
+  sources:
+    - path: "/files"
+      name: Home
+      config:
+        defaultUserScope: "/users/"
+        defaultEnabled: true
+        createUserDir: true
+    - path: "/home/filebrowser"
+      name: Backend
+  maxArchiveSize: 50
+auth:
+  tokenExpirationHours: 2
+  methods:
+    password:
+      enabled: true
+      minLength: 5
+      signup: false
+frontend:
+  name: "Files"
+  disableDefaultLinks: false
+  disableUsedPercentage: true
+  disableNavButtons: false

@@ -1,0 +1,66 @@
+services:
+  samba:
+    image: crazymax/samba:${SAMBA_VERSION:-latest}
+    container_name: samba
+    restart: ${RESTART_POLICY}
+
+    environment:
+      TZ: "${TZ}"
+      SAMBA_LOG_LEVEL: "0"
+      CONFIG_FILE: "/config.yml"
+
+    ports:
+      - "445:445/tcp"
+
+    volumes:
+      - "${DOCKER_SETUP_DIR}/samba/data:/data"
+      - "${DOCKER_DATA_DIR}:/samba"
+
+    configs:
+      - source: samba_config
+        target: /config.yml
+
+    networks:
+      - app-network
+
+configs:
+  samba_config:
+    content: |
+      auth:
+        - user: ${SAMBA_USER}
+          group: ${SAMBA_USER}
+          uid: ${PUID}
+          gid: ${PGID}
+          password: ${SAMBA_PASSWORD}
+
+        - user: ${SAMBA_USER_ADMIN}
+          group: ${SAMBA_USER_ADMIN}
+          uid: ${SAMBA_ADMIN_UID:-1001}
+          gid: ${SAMBA_ADMIN_GID:-1001}
+          password: ${SAMBA_PASSWORD_ADMIN}
+
+      global:
+        - "force user = ${SAMBA_USER}"
+        - "force group = ${SAMBA_USER}"
+        - "create mask = 0664"
+        - "directory mask = 0775"
+
+      share:
+        - name: data
+          path: /samba
+          browsable: yes
+          readonly: no
+          guestok: no
+          validusers: ${SAMBA_USER_ADMIN}
+
+        - name: ${SAMBA_USER}
+          path: /samba/users/${SAMBA_USER}
+          browsable: yes
+          readonly: no
+          guestok: no
+          validusers: ${SAMBA_USER}, ${SAMBA_USER_ADMIN}
+
+networks:
+  app-network:
+    external: true
+    name: ${APP_NETWORK}
