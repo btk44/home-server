@@ -110,6 +110,7 @@ docker_down() {
 
 data_remove() {
     confirm 'Want to continue with removing container setup (you can do it later with remove operation)? (y/n): '
+    confirm 'Please confirm again (this can remove db, and ui setups) (y/n): '
 
     remove_env_section "$SETUP_DIR/.env" "$1"
     as_root rm -rf "$SETUP_DIR/$1"
