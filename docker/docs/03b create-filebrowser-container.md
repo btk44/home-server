@@ -41,7 +41,7 @@
   ```
 - create user for non-admin:
   ```bash
-  sudo docker exec -it filebrowser-quantum sh
+  sudo docker exec -it filebrowser sh
   ```
   inside container shell:
   ```bash

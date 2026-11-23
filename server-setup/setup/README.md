@@ -1,1 +1,0 @@
-this directory will contain built docker containers and their app data.

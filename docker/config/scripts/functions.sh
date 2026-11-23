@@ -7,7 +7,8 @@ fail() {
 
 prompt() {
   local variable="$1" message="$2" default="$3" answer
-  read -r -p "$message [$default]: " answer || fail 'Input cancelled.'
+  printf '%s [%s]: ' "$message" "$default" >&2
+  read -r answer || fail 'Input cancelled.'
   printf -v "$variable" '%s' "${answer:-$default}"
 }
 
@@ -32,4 +33,13 @@ as_root() {
   else
     sudo "$@"
   fi
+}
+
+confirm(){
+    local message="$1"
+    printf '%s' "$message"
+    read -r confirmation
+    if [[ "$confirmation" != "y" ]]; then
+        fail 'Operation cancelled by user.'
+    fi
 }
