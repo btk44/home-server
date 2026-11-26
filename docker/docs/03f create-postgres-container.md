@@ -1,4 +1,4 @@
-#### PostgreSQL [ [docs](https://hub.docker.com/_/postgres/) ]
+### PostgreSQL [ [docs](https://hub.docker.com/_/postgres/) ]
 
 - create directories:
   ```bash

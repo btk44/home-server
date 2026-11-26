@@ -1,4 +1,4 @@
-#### Samba  [ [docs](https://github.com/crazy-max/docker-samba) ]
+### Samba  [ [docs](https://github.com/crazy-max/docker-samba) ]
 
 - create directories:
   ```bash
