@@ -5,7 +5,7 @@ services:
     restart: ${RESTART_POLICY}
     volumes:
       - "${DOCKER_SOCKET_PATH}:/var/run/docker.sock"
-      - "${BASE_DOCKER_DIR}/portainer/data:/data"
+      - "${DOCKER_SETUP_DIR}/portainer/data:/data"
     ports:
       - "${PORTAINER_HTTPS_PORT}:9443"
       #- "${PORTAINER_EDGE_PORT}:8000"
@@ -14,5 +14,5 @@ services:
 
 networks:
   app-network:
-    driver: bridge
+    external: true
     name: ${APP_NETWORK}
