@@ -1,0 +1,18 @@
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:lts
+    restart: ${RESTART_POLICY}
+    volumes:
+      - "${DOCKER_SOCKET_PATH}:/var/run/docker.sock"
+      - "${BASE_DOCKER_DIR}/portainer/data:/data"
+    ports:
+      - "${PORTAINER_HTTPS_PORT}:9443"
+      #- "${PORTAINER_EDGE_PORT}:8000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    name: ${APP_NETWORK}

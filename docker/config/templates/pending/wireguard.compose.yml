@@ -1,0 +1,28 @@
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    restart: ${RESTART_POLICY}
+    cap_add:
+      - NET_ADMIN
+    environment:
+      PUID: "${PUID}"
+      PGID: "${PGID}"
+      TZ: ${TZ}
+      SERVERURL: ${WIREGUARD_SERVER_URL}
+      SERVERPORT: "${WIREGUARD_SERVER_PORT}"
+      PEERS: ${WIREGUARD_PEERS}
+      PEERDNS: ${WIREGUARD_PEER_DNS}
+    ports:
+      - "${WIREGUARD_SERVER_PORT}:${WIREGUARD_SERVER_PORT}/udp"
+    volumes:
+      - "${BASE_DOCKER_DIR}/wireguard/config:/config"
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    name: ${APP_NETWORK}
